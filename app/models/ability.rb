@@ -10,7 +10,7 @@ class Ability
         can :access, :rails_admin       # only allow admin users to access Rails Admin
         can :dashboard     
       else
-        
+        can :manage, :all
         can :read, :all
         can :create, :comments
       end
