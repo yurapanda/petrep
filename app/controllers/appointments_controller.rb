@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments.json
   def index
     @appointments = Appointment.all
+    @user = current_user
   end
 
   # GET /appointments/1
@@ -69,6 +70,6 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:patient_id, :start_date, :start_time, :end_time, :confirmed, avail_services_attributes: [:id, :service_id, :price, :done, :minutes_to_finish, :_destroy])
+      params.require(:appointment).permit(:patient_id, :start_date, :doctor, :start_time, :end_time, :confirmed, avail_services_attributes: [:id, :service_id, :price, :done, :minutes_to_finish, :_destroy])
     end
 end

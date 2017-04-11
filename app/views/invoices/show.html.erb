@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="well">
 <p>
   <strong>User:</strong>
   <%= @invoice.user.email %>
@@ -51,12 +51,18 @@
 			<% end %>
 			</table>
 			<p>
-			<h3> Total Bill = Php <%= total_bill %></h3>
+			<% if @invoice.paid? %>
+			<h3> Total Bill = Php 0.00 </h3>
+			<% else %>
+			<h3> Total Bill = Php <%= total_bill %>0</h3>
+			<% end %>
 			</p>
 	
 </p>
+</div>
 <%= render partial: 'comments/comments', locals: {commentable: @invoice} %>
 <%= render partial: 'comments/form', locals: {commentable: @invoice} %>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<br>
+<%= link_to 'Edit', edit_invoice_path(@invoice), class: "btn btn-default" %> |
+<%= link_to 'Back', invoices_path, class: "btn btn-default" %>
+<br>

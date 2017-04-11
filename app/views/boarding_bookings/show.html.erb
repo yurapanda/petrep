@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<div class="well">
 <p>
   <strong>Patient:</strong>
-  <%= @boarding_booking.patient %>
+  <%= @boarding_booking.patient.name %>
 </p>
 
 <p>
@@ -17,9 +17,15 @@
 
 <p>
   <strong>Confirmed:</strong>
-  <%= @boarding_booking.confirmed %>
+  <% if @boarding_booking.confirmed? %>
+  	Yes
+  <% else %>
+  	No
+  <% end %>
 </p>
+</div>
 <%= render partial: 'comments/comments', locals: {commentable: @boarding_booking} %>
 <%= render partial: 'comments/form', locals: {commentable: @boarding_booking} %>
+
 <%= link_to 'Edit', edit_boarding_booking_path(@boarding_booking) %> |
 <%= link_to 'Back', boarding_bookings_path %>

@@ -1,25 +1,32 @@
 <p id="notice"><%= notice %></p>
-
+<div class="well">
 <p>
   <strong>Patient:</strong>
-  <%= @appointment.patient %>
+  <%= @appointment.patient.name %>
 </p>
 
 <p>
   <strong>Start date:</strong>
-  <%= @appointment.start_date %>
+  <%= @appointment.start_date.strftime("%B %d %Y") %>
 </p>
 
 <p>
   <strong>Start time:</strong>
-  <%= @appointment.start_time %>
+  <%= @appointment.start_time.strftime("%I:%M %p")  %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @appointment.end_time %>
+  <%= @appointment.end_time.strftime("%I:%M %p")  %>
 </p>
+
+<p>
+  <strong>Attending Doctor:</strong>
+  <%= @appointment.end_time.strftime("%I:%M %p")  %>
+</p>
+</div>
+
 <%= render partial: 'comments/comments', locals: {commentable: @appointment} %>
 <%= render partial: 'comments/form', locals: {commentable: @appointment} %>
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: "btn btn-default" %> |
+<%= link_to 'Back', appointments_path, class: "btn btn-default" %>

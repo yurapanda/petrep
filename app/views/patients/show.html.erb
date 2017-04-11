@@ -1,7 +1,10 @@
+<div class="well center">
 <p id="notice"><%= notice %></p>
 <p>
-<%= image_tag @patient.picture.url(:medium) %>
+<%= image_tag @patient.picture.url(:medium), class: "img-thumbnail" %>
 </p>
+</div>
+<div class="well">
 <p>
   <strong>Name:</strong>
   <%= @patient.name %>
@@ -30,7 +33,7 @@
 <p>
   <strong>Birthday:</strong>
 
-  <% @patient.birth_date %>
+  <%= @patient.birth_date.strftime("%B %d %Y") %>
 </p>
 <p>
   <strong>Age:</strong>
@@ -41,6 +44,8 @@
   <%= distance_of_time_in_words(a, @patient.birth_date) %>
   <% end %>
 </p>
+</div>
+<div class="well">
 <h3> Weight </h3>
 <div class="media">
   <div class="media-body">
@@ -69,7 +74,9 @@
   </div>
 </div>
 
+</div>
 
+<div class="well">
 <h3> Test Results </h3>
 <div class="media">
   <div class="media-body">
@@ -93,7 +100,9 @@
   </div>
 </div>
 
+</div>
 
+<div class="well">
 <h3> Vaccinations Done </h3>
 <div class="media">
   <div class="media-body">
@@ -118,6 +127,9 @@
     </table>
   </div>
 </div>
+</div>
+
 <%= link_to 'Edit', edit_patient_path(@patient),  class: "btn btn-default" %> |
 <%= link_to 'Back', :back, class: "btn btn-default" %>
 
+</div>

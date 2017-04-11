@@ -10,9 +10,9 @@ class Ability
         can :access, :rails_admin       # only allow admin users to access Rails Admin
         can :dashboard     
       else
-      
-        can :manage, :appointments
-        can :manage, :boarding_booking
+        can :manage, Patient
+        can :manage, Appointment
+        can :manage, BoardingBooking
         can :read, :all
         can :create, :comments
       end

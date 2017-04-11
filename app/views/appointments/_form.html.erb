@@ -5,8 +5,12 @@
     <%= f.association :patient %>
     <%= f.input :start_date %>
     <%= f.input :start_time %>
-    <%= f.input :end_time %>
+
+
+    <% if current_user.admin? %>
     <%= f.input :confirmed %>
+    <% end %>
+
   </div>
     <%= f.simple_fields_for :avail_services do |avail_service| %>
       <%= render 'avail_service_fields', f: avail_service %>

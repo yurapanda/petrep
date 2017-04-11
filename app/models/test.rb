@@ -5,5 +5,7 @@ class Test < ApplicationRecord
   accepts_nested_attributes_for :results, reject_if: :all_blank, allow_destroy: true
   has_many :prescriptions, dependent: :destroy, inverse_of: :test
   accepts_nested_attributes_for :prescriptions, reject_if: :all_blank, allow_destroy: true
+
+  validates :name, presence: true
 end
 

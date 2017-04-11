@@ -1,12 +1,26 @@
 <h3> Comments: </h3>
 <div class="well">
+
 <ul>
   <% commentable.comments.each do |comment| %>
+  	<% if comment.user.admin? %>
+  	<div class="well">
+  	<p class="admin">
+    	<strong>"<%= comment.body %> " </strong><em>commented
+      <%= time_ago_in_words(comment.created_at) + ' ago' %> by
+       ADMIN </em>
+       </p>
+       </div>
+       <% else %>
 
-    	<li> <%= comment.body %> </li>
-      <li> <%= time_ago_in_words(comment.created_at) + ' ago' %> by
-       <%= comment.user.email %> </li>
-    
+	<div class="well">
+  	<p class="admin">
+    	<strong>"<%= comment.body %> " </strong><em>commented
+      <%= time_ago_in_words(comment.created_at) + ' ago' %> by
+       <%= comment.user.email %> </em>
+       </p>
+       </div>
+    <% end %>
   <% end %>
   </ul>
 </div>
