@@ -1,6 +1,6 @@
 class KindsController < ApplicationController
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
-
+    load_and_authorize_resource
   # GET /kinds
   # GET /kinds.json
   def index

@@ -1,6 +1,6 @@
 class BoardingBookingsController < ApplicationController
   before_action :set_boarding_booking, only: [:show, :edit, :update, :destroy]
-
+    load_and_authorize_resource
   # GET /boarding_bookings
   # GET /boarding_bookings.json
   def index

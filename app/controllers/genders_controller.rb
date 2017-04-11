@@ -1,6 +1,6 @@
 class GendersController < ApplicationController
   before_action :set_gender, only: [:show, :edit, :update, :destroy]
-
+    load_and_authorize_resource
   # GET /genders
   # GET /genders.json
   def index

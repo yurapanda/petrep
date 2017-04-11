@@ -26,6 +26,21 @@
   <strong>Description:</strong>
   <%= @patient.description %>
 </p>
+
+<p>
+  <strong>Birthday:</strong>
+
+  <% @patient.birth_date %>
+</p>
+<p>
+  <strong>Age:</strong>
+  <% a = Time.now %>
+  <% if @patient.birth_date.nil? %>
+
+  <% else %>
+  <%= distance_of_time_in_words(a, @patient.birth_date) %>
+  <% end %>
+</p>
 <h3> Weight </h3>
 <div class="media">
   <div class="media-body">

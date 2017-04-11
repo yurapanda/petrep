@@ -2,7 +2,7 @@
 
 <h1>Invoices</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>User</th>
@@ -15,9 +15,16 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.user %></td>
-        <td><%= invoice.patient %></td>
-        <td><%= invoice.paid %></td>
+        <td><%= invoice.user.email %></td>
+        <td><%= invoice.patient.name %></td>
+        <td><% if invoice.paid? %>
+              Yes
+              <% else %>
+              No 
+              <% end %>
+
+
+        </td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

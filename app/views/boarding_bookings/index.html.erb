@@ -2,7 +2,7 @@
 
 <h1>Boarding Bookings</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Patient</th>
@@ -16,10 +16,15 @@
   <tbody>
     <% @boarding_bookings.each do |boarding_booking| %>
       <tr>
-        <td><%= boarding_booking.patient %></td>
-        <td><%= boarding_booking.start_date %></td>
-        <td><%= boarding_booking.end_date %></td>
-        <td><%= boarding_booking.confirmed %></td>
+        <td><%= boarding_booking.patient.name %></td>
+        <td><%= boarding_booking.start_date.strftime("%I:%M %p %B %d %Y") %></td>
+        <td><%= boarding_booking.end_date.strftime("%I:%M %p %B %d %Y") %></td>
+        <td><% if boarding_booking.confirmed? %>
+            Yes
+            <% else %>
+            No
+            <% end %>
+        </td>
         <td><%= link_to 'Show', boarding_booking %></td>
         <td><%= link_to 'Edit', edit_boarding_booking_path(boarding_booking) %></td>
         <td><%= link_to 'Destroy', boarding_booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>

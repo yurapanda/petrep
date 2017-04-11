@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
-
+    load_and_authorize_resource
   # GET /patients
   # GET /patients.json
   def index
@@ -74,6 +74,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:name, :user_id, :breed_id, :gender_id, :description, :picture, done_vaccinations_attributes: [:id, :patient_id, :vaccination_id, :_destroy])
+      params.require(:patient).permit(:name, :user_id, :breed_id, :gender_id, :birth_date ,:description, :picture, done_vaccinations_attributes: [:id, :patient_id, :vaccination_id, :_destroy])
     end
 end
