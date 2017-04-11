@@ -2,7 +2,7 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-    config.parent_controller = 'ApplicationController' 
+  config.parent_controller = 'ApplicationController' 
     
     #config.authorize_with :cancan #TODO add cancancan to rails_admin config
   #end
@@ -11,7 +11,7 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
-  
+
   # ## == Cancan ==
   config.authorize_with :cancan
 
