@@ -1,0 +1,12 @@
+<div class="nested-fields">
+  <table class="table table-hover">
+  <tr>
+    <td> <%= f.input :name %>  </td>
+   <td>  <%= f.input :result_value %>    </td>
+   <td> <%= f.input :normal_low %>    </td>
+    <td><%= f.input :normal_high %>  </td>
+     <td><br><%= link_to_remove_association "Remove Result" , f , class: "btn btn-warning"%></td>
+  </tr>
+  </table>
+
+</div>

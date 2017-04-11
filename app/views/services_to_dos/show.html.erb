@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @services_to_do.service %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @services_to_do.done %>
+</p>
+
+<%= link_to 'Edit', edit_services_to_do_path(@services_to_do) %> |
+<%= link_to 'Back', services_to_dos_path %>

@@ -1,0 +1,108 @@
+<p id="notice"><%= notice %></p>
+<p>
+<%= image_tag @patient.picture.url(:medium) %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @patient.user.email %>
+</p>
+
+<p>
+  <strong>Breed:</strong>
+  <%= @patient.breed.name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @patient.gender.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @patient.description %>
+</p>
+<h3> Weight </h3>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+<!--       <thead>
+        <tr>
+          <th> Weight </th>
+          <th> Current </th>
+        </tr>
+      </thead> -->
+      <tbody>
+        <% @weights.each do |weight| %>
+          <tr>
+          <% if weight.kilograms.nil? %>
+            0
+          <% else %>
+            <td><h4> <%= weight.kilograms %> kilograms / <%= weight.kilograms*(2.2) %> pounds</h4></td>
+          </tr>
+          <% end %>
+        <% end %>
+
+      </tbody>
+    </table>
+
+<%= link_to "Add Current Weight", new_patient_weight_path(@patient), class: 'pull-right' %>
+  </div>
+</div>
+
+
+<h3> Test Results </h3>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th> Name </th>
+          <th> Date </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tests.each do |t| %>
+          <tr>
+            <td><h4> <%= link_to t.name, t %></h4></td>
+            <td><h4> <%= t.created_at.strftime("%I:%M %p %B %d %Y")  %></h4></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<h3> Vaccinations Done </h3>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th> Name </th>
+          <th> Date Done </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @done_vaccinations.each do |d| %>
+          <tr>
+            <td><h4> <%= d.vaccination.name %></h4></td>
+            <td><h4> <%= d.created_at.strftime("%I:%M %p %B %d %Y")  %></h4></td>
+            <td><h4> <%= time_ago_in_words(d.created_at) + ' ago'  %></h4></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'Edit', edit_patient_path(@patient),  class: "btn btn-default" %> |
+<%= link_to 'Back', :back, class: "btn btn-default" %>
+

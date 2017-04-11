@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @appointment.patient %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @appointment.start_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @appointment.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @appointment.end_time %>
+</p>
+<%= render partial: 'comments/comments', locals: {commentable: @appointment} %>
+<%= render partial: 'comments/form', locals: {commentable: @appointment} %>
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

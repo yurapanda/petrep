@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @test.name %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @test.patient.name %>
+</p>
+<p>
+  <strong>Owner:</strong>
+  <%= @test.patient.user.email %>
+</p>
+<p>
+  <strong>Diagnosis:</strong>
+  <%= @test.diagnosis%>
+</p>
+
+<p>
+	<h2> Results </h2>
+	<table class="table table-hover">
+			<thead>
+				<tr>
+				<td>Name</td>
+				<td>Result</td>
+				<td>Normal Range of Value</td>
+				<td> Analysis </td>
+				</tr>
+			</thead>
+		
+			
+			<% @test.results.each do |result| %>
+			<tbody>
+				<tr>
+					<td><%= result.name %></td>
+					<td><%= result.result_value %></td>
+					<td><%= result.normal_low %> -	<%= result.normal_high %></td>
+					<td> <% if result.result_value > result.normal_high %>
+							Above Normal
+							<% elsif result.result_value < result.normal_low %>
+							Below Normal
+							<% elsif result.result_value >= result.normal_low && result.result_value <= result.normal_high %>
+							Normal
+								
+						<% end %>
+						</td>
+				</tr>
+			</tbody>
+			<% end %>
+			
+	</div>
+	</table>
+</p>
+<p>
+	<h2> Prescription </h2>
+	<table class="table table-hover">
+			<thead>
+				<tr>
+				<td>Name</td>
+				<td>Frequency</td>
+				
+				</tr>
+			</thead>
+		
+			
+			<% @test.prescriptions.each do |p| %>
+			<tbody>
+				<tr>
+					<td><%= p.name %></td>
+					<td><%= p.prescription_frequency %></td>
+			
+				</tr>
+			</tbody>
+			<% end %>
+			
+	</div>
+	</table>
+</p>
+<%= render partial: 'comments/comments', locals: {commentable: @test} %>
+<%= render partial: 'comments/form', locals: {commentable: @test} %>
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', :back %>

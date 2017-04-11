@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  normal_low: 9.99
+  normal_high: 9.99
+  test: one
+
+two:
+  name: MyString
+  normal_low: 9.99
+  normal_high: 9.99
+  test: two

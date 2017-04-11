@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services To Dos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Done</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services_to_dos.each do |services_to_do| %>
+      <tr>
+        <td><%= services_to_do.service %></td>
+        <td><%= services_to_do.done %></td>
+        <td><%= link_to 'Show', services_to_do %></td>
+        <td><%= link_to 'Edit', edit_services_to_do_path(services_to_do) %></td>
+        <td><%= link_to 'Destroy', services_to_do, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Services To Do', new_services_to_do_path %>

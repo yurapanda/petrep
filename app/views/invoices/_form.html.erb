@@ -1,0 +1,19 @@
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.association :patient %>
+    <%= f.input :paid %>
+  </div>
+  <%= f.simple_fields_for :services_to_dos do |services_to_do| %>
+      <%= render 'services_to_do_fields', f: services_to_do %>
+    <% end %>
+   <div class="links">
+      <%= link_to_add_association 'Add Service To do', f, :services_to_dos, class: "btn btn-default" %>
+    </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

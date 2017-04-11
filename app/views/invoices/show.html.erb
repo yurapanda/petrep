@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invoice.user.email %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @invoice.patient.name %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%if @invoice.paid? %>
+  		Paid
+  <% else %>
+  		Not Paid
+  <% end %>
+</p>
+<p>
+	<h2> Services </h2>
+	<table class="table table-hover">
+			<thead>
+				<tr>
+				<td>Service</td>
+				<td>Price</td>
+				<td>Status</td>
+				
+				</tr>
+			</thead>
+		
+			<% total_bill = 0.0 %>
+			<% @invoice.services_to_dos.each do |services_to_do| %>
+			<tbody>
+				<tr>
+				
+					<td><%= services_to_do.service.name %></td>
+					<td><%= services_to_do.service.price %></td>
+					<% total_bill += services_to_do.service.price %>
+					<td> <% if services_to_do.done? %>
+							Done
+							<% else %>
+							On-Going
+						<% end %>
+						</td>
+
+
+				</tr>
+			</tbody>
+			<% end %>
+			</table>
+			<p>
+			<h3> Total Bill = Php <%= total_bill %></h3>
+			</p>
+	
+</p>
+<%= render partial: 'comments/comments', locals: {commentable: @invoice} %>
+<%= render partial: 'comments/form', locals: {commentable: @invoice} %>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

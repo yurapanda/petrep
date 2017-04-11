@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @boarding_booking.patient %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @boarding_booking.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @boarding_booking.end_date %>
+</p>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= @boarding_booking.confirmed %>
+</p>
+<%= render partial: 'comments/comments', locals: {commentable: @boarding_booking} %>
+<%= render partial: 'comments/form', locals: {commentable: @boarding_booking} %>
+<%= link_to 'Edit', edit_boarding_booking_path(@boarding_booking) %> |
+<%= link_to 'Back', boarding_bookings_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  patient: one
+  paid: false
+
+two:
+  user: two
+  patient: two
+  paid: false

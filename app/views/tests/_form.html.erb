@@ -1,0 +1,26 @@
+<%= simple_form_for(@test) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.association :patient %>
+    <%= f.input :diagnosis %>
+      <%= f.input :prognosis %>
+  </div>
+  <%= f.simple_fields_for :results do |result| %>
+      <%= render 'result_fields', f: result %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add Result', f, :results, class: "btn btn-default" %>
+    </div>
+      <%= f.simple_fields_for :prescriptions do |prescription| %>
+      <%= render 'prescription_fields', f: prescription %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add Prescription', f, :prescriptions, class: "btn btn-default" %>
+    </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

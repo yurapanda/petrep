@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kilograms:</strong>
+  <%= @weight.kilograms %>
+</p>
+
+<p>
+  <strong>Current:</strong>
+  <%= @weight.current %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @weight.patient %>
+</p>
+
+<%= link_to 'Edit', edit_weight_path(@weight) %> |
+<%= link_to 'Back', weights_path %>
