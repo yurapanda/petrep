@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
+  get 'welcome/about'
 
   #nested routing for patients/pets
   resources :patients do

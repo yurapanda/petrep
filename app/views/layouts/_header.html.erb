@@ -1,4 +1,4 @@
-   <nav class="navbar navbar-default">
+   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -34,6 +34,7 @@
      
         <li><%= link_to "Boarding Booking", boarding_bookings_path %></li>
         <li><%= link_to "Services", services_path %></li>
+
            <% if user_signed_in? && current_user.admin? %><li><%= link_to "Vaccinations", vaccinations_path %></li>   <% end %>
 
         
